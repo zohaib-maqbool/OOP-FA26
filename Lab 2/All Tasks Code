@@ -1,0 +1,255 @@
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello and welcome!");
+
+
+        // Lab Task 2
+
+        Rectangle rect = new Rectangle();
+        System.out.println(rect.Calculatearea());
+        Rectangle rect1 = new Rectangle(10, 20);
+        System.out.println(rect1.Calculatearea());
+
+
+        // Lab Task 3
+        Point p1 = new Point();
+        p1.movePoint(2, 3);
+        p1.display();
+
+        Point p2 = new Point();
+        p2.movePoint(2, 3);
+        p2.display();
+
+
+        //Graded Lab Task 1
+
+        Circle c1 = new Circle();
+        c1.radius=345.5432;
+        c1.calcCirc();
+
+
+        double a = c1.calcCirc();
+        System.out.println(c1.calcCirc());
+
+
+        Circle c2 = new Circle(2.84803);
+        double b = c2.calcCirc();
+        System.out.println(b);
+
+
+        // Graded Lab Task 2
+
+        Account a1 = new Account();
+        a1.balance=10000;
+        a1.active=true;
+        a1.deposit(2000);
+        System.out.println(a1.balance);
+
+        Account a2 = new Account(20000,false);
+        a2.withdraw(2000);
+        System.out.println(a2.balance);
+
+
+        // Graded Lab Task 3
+
+        Distance d1 = new Distance();
+        d1.feet= 12;
+        d1.inches=12;
+        d1.display();
+
+        Distance d2 = new Distance(24,24);
+        d2.display();
+
+
+        // Graded Lab Task 4
+
+        Marks m1 = new Marks();
+        m1.Cs=20;
+        m1.Eng=30;
+        m1.Urdu=25;
+        System.out.println(m1.Sum());
+
+        Marks m2 = new Marks(35,45,40);
+        System.out.println(m2.Sum());
+
+
+        // Graded Lab Task 5
+
+        Time t1 = new Time();
+        t1.hr=23;
+        t1.min=56;
+        t1.seconds=60;
+        t1.displayTime();
+
+        Time t2 = new Time(12,46,34);
+        t2.displayTime();
+
+
+
+
+    }
+}
+
+
+class Point {
+
+    private int x;
+    private int y;
+
+    public Point() {
+        x = 1;
+        y = 2;
+    }
+
+    public Point(int a, int b) {
+        x = a;
+        y = b;
+    }
+
+    public void setX(int a) {
+        x = a;
+    }
+
+    public void setY(int b) {
+        y = b;
+    }
+
+
+
+
+    public void display() {
+        System.out.println("x coordinate = " + x + " y coordinate = "
+                + y);
+    }
+
+    public void movePoint(int a, int b) {
+        x = x + a;
+        y = y + b;
+        System.out.println("x coordinate after moving = " + x + " y coordinate after moving = " + y);
+    }
+
+}
+
+class Rectangle {
+    public int length, width;
+    public Rectangle() {
+        length = 5;
+        width = 2;
+    }
+    public Rectangle(int l, int w) {
+        length = l;
+        width = w;
+    }
+    public int Calculatearea() {
+        return (length * width);
+    }
+}
+
+public class Circle {
+    double radius;
+
+    public Circle(){
+    }
+
+    public Circle(double radius){
+        this.radius=radius;
+    }
+
+    public double calcCirc(){
+        return 2*3.14*radius;
+    }
+
+}
+
+
+public class Account {
+    public int balance;
+    public boolean active;
+
+    public Account(){
+
+    }
+
+    public Account(int balance, boolean active){
+        this.balance=balance;
+        this.active=active;
+    }
+
+    public int withdraw(int amount){
+        balance = balance-amount;
+        System.out.println("Withdrawal successful");
+        return balance;
+    }
+
+    public int deposit(int amount){
+        balance = balance+amount;
+        System.out.println("Deposit successful");
+        return balance;
+    }
+}
+
+
+public class Distance {
+    public double feet;
+    public double inches;
+
+    public Distance(){}
+
+    public Distance(double feet,double inches){
+        this.feet=feet;
+        this.inches=inches;
+    }
+
+    public void display(){
+        System.out.println("Feet:"+feet);
+        System.out.println("Inches:"+inches);
+    }
+
+}
+
+
+public class Marks {
+    public int Eng;
+    public int Urdu;
+    public int Cs;
+
+    public Marks(){}
+
+    public Marks(int Eng,int Urdu,int Cs){
+        this.Eng=Eng;
+        this.Urdu=Urdu;
+        this.Cs=Cs;
+    }
+
+    public int Sum(){
+        return Eng+Urdu+Cs;
+    }
+}
+
+
+public class Time {
+    int hr = 0;
+    int min = 0;
+    int seconds = 0;
+
+    public Time(){
+        System.out.println("Running Constructor without arguments...");
+    }
+
+    public Time(int hr, int min, int seconds) {
+        if (hr >= 0 && hr <= 24 && min >= 0 && min <= 60 && seconds >= 0 && seconds <= 60){
+            this.hr = hr;
+            this.min = min;
+            this.seconds = seconds;
+        }else{
+            System.out.println("Hours should be between 0-24\n" +
+                    "Minutes should be between 0-60\n" +
+                    "Seconds should be between 0-60");
+            System.out.printf("Your entered time is [HH:MM:SS]: %d:%d:%d \n",hr,min,seconds);
+            return;
+        }
+    }
+    public void displayTime(){
+        System.out.printf("Time [HH:MM:SS]: %d:%d:%d",hr,min,seconds);
+    }
+}
